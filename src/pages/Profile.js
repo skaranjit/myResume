@@ -148,15 +148,16 @@ class Profile extends Component {
     console.log(frameIndex);
   }
 
-  // getAllImg = async () => {
-  //   var x = 0;
-  //   while (x != 147) {
-  //     x++;
-  //     const imgObj = new Image();
+  getAllImg = async () => {
+    var x = 0;
+    while (x != 3690) {
+      x++;
+      const imgObj = new Image();
 
-  //     imgObj.src = await this.getImage(x);
-  //   }
-  // };
+      imgObj = this.getImage(x);
+      await imgObj.onload;
+    }
+  };
   componentDidMount() {
     // this.getAllImg();
     this.showImage();
