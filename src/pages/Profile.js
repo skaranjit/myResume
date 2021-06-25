@@ -159,7 +159,7 @@ class Profile extends Component {
     }
   };
   componentDidMount() {
-    // this.getAllImg();
+    this.getAllImg();
     this.showImage();
     document.onscroll = () => {
       requestAnimationFrame(() => {
