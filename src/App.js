@@ -1,0 +1,26 @@
+import logo from "./logo.svg";
+// import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import About from "./pages/About";
+import Profile from "./pages/Profile";
+import ContactMe from "./pages/ContactMe";
+import "./assets/css/canvas.css";
+
+function App() {
+  return (
+    <div>
+      <Router>
+        <Layout>
+          <Switch>
+            <Route path={"/"} component={Profile}></Route>
+            <Route path={"/About"} component={About}></Route>
+            <Route path={"/ContactMe"} component={ContactMe}></Route>
+          </Switch>
+        </Layout>
+      </Router>
+    </div>
+  );
+}
+
+export default App;
