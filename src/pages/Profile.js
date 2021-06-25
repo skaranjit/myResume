@@ -72,9 +72,7 @@
 // }
 
 // export default Profile;
-import { PromiseResolve } from "es-abstract/es2018";
-import { addLeadingSlash } from "history/PathUtils";
-import React, { Component, createRef, useEffect, useRef } from "react";
+import React, { Component, createRef } from "react";
 import { Container, Row } from "react-bootstrap";
 const checkImage = (path) =>
   new Promise((resolve) => {
