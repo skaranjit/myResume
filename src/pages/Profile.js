@@ -129,7 +129,7 @@ class Profile extends Component {
   }
   updateCanvas() {
     const canvas = this.refs.canvas;
-    const frameCount = 3690;
+    const frameCount = 208;
     var imageObj1 = new Image();
     imageObj1 = this.getImage(1);
     const ctx = canvas.getContext("2d");
@@ -150,7 +150,7 @@ class Profile extends Component {
 
   getAllImg = async () => {
     var x = 0;
-    while (x != 3690) {
+    while (x != 208) {
       x++;
       const imgObj = new Image();
 
