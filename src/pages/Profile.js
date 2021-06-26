@@ -152,7 +152,7 @@ class Profile extends Component {
     var x = 0;
     while (x != 208) {
       x++;
-      const imgObj = new Image();
+      var imgObj = new Image();
 
       imgObj = this.getImage(x);
       await imgObj.onload;

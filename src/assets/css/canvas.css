@@ -4,6 +4,7 @@ html {
   animation: auto;
   animation-delay: 38s;
   animation-fill-mode: both;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -13,7 +14,8 @@ body {
   justify-content: center;
   align-content: space-around;
   align-items: flex-end;
-
+  scroll-behavior: smooth;
+  scroll-snap-align: initial;
   animation: auto;
   animation-delay: 38s;
   animation-fill-mode: both;
