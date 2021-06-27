@@ -23,7 +23,11 @@ const Canvas = (props) => {
     };
   }, [draw]);
 
-  return <canvas ref={canvasRef} {...rest} />;
+  return (
+    <div className="wrapper">
+      <canvas ref={canvasRef} {...rest} />;
+      <div id="Spacer"></div>
+      </div>
 };
 
 export default Canvas;

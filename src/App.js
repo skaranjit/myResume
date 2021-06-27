@@ -5,10 +5,9 @@ import About from "./pages/About";
 import Profile from "./pages/Profile";
 import ContactMe from "./pages/ContactMe";
 import "./assets/css/canvas.css";
-
 function App() {
   return (
-    <div>
+    <div id="root">
       <Router>
         <Layout>
           <Switch>

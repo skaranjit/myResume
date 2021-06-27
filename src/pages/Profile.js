@@ -74,6 +74,18 @@
 // export default Profile;
 import React, { Component, createRef } from "react";
 import { Container, Row } from "react-bootstrap";
+import { findAllInRenderedTree } from "react-dom/test-utils";
+import { ReactDOM } from "react";
+
+const cache = {};
+function importAll(r) {
+  r.keys().forEach((key) => (cache[key] = r(key)));
+}
+// Note from the docs -> Warning: The arguments passed to require.context must be literals!
+importAll(require.context("./../assets/img/", false, /\.(png|jpe?g|svg)$/));
+
+const images = Object.entries(cache).map((module) => module[1].default);
+
 const checkImage = (path) =>
   new Promise((resolve) => {
     const img = new Image();
@@ -84,103 +96,113 @@ const checkImage = (path) =>
 class Profile extends Component {
   constructor() {
     super();
-    this.canvasRef = createRef;
+    this.canvasRef = createRef();
+    this.canvas = document.createElement("canvas", {
+      refs: this.canvasRef.current,
+    });
+    this.ctx = this.canvas.getContext("2d");
   }
   getImage(index) {
-    const imgUrl =
-      // "https://www.apple.com/105/media/us/airpods-pro/2019/1299e2f5_9206_4470_b28e_08307a42f19b/anim/sequence/large/01-hero-lightpass/" +
-      // index.toString().padStart(4, 0) +
-      // ".jpg";
-      process.env.PUBLIC_URL +
-      "/img/img" +
-      index.toString().padStart(5, 0) +
-      ".jpeg";
-    const imgObj = new Image();
-    const myPromise = checkImage(imgUrl);
+    // const imgUrl =
+    //   // "https://www.apple.com/105/media/us/airpods-pro/2019/1299e2f5_9206_4470_b28e_08307a42f19b/anim/sequence/large/01-hero-lightpass/" +
+    //   // index.toString().padStart(4, 0) +
+    //   // ".jpg";
+    //   // process.env.PUBLIC_URL +
+    //   { img } + index.toString().padStart(5, 0) + ".jpeg";
+    // const imgObj = new Image();
+
+    const imgObj = images.map((image) => image);
+    const imgO = new Image();
+    const myPromise = checkImage(imgObj[index]);
     myPromise
       .then((response) => {
-        imgObj.src = imgUrl;
+        imgO.src = imgObj[index];
         console.log("resolved");
       })
       .catch((error) => console.error(error));
-    return imgObj;
+    console.log(imgO);
+    return imgO;
   }
 
-  updateImage = (imgObj, index, ctx) => {
+  updateImage = (index) => {
     if (index === 0 || index === null) {
       index = 1;
     }
-    imgObj = this.getImage(index);
-    imgObj.onload = () => {
-      ctx.drawImage(imgObj, 0, 0);
-    };
+    const imgObj = this.getImage(index);
+    imgObj.onload = () => this.drawImage(imgObj);
   };
-  showImage() {
-    const canvas = this.refs.canvas;
+  showImage(canvas) {
     var imgO = new Image();
     imgO = this.getImage(1);
-    imgO.onload = () => {
-      const ctx = canvas.getContext("2d");
-      canvas.width = imgO.width;
-      canvas.height = imgO.height;
-      console.log(imgO.width, imgO.height);
-      ctx.drawImage(imgO, 0, 0);
-    };
+
+    imgO.onload = () => this.drawImage(imgO);
   }
-  updateCanvas() {
-    const canvas = this.refs.canvas;
+  showNone() {
+    const canvas = this.canvasRef.current;
+    canvas.width = 0;
+    canvas.height = 0;
+  }
+  drawImage(img) {
+    // Use the intrinsic size of image in CSS pixels for the canvas element
+
+    // Will draw the image as 300x227, ignoring the custom size of 60x45
+    // given in the constructor
+
+    this.ctx.drawImage(img, 0, 0);
+
+    // To use the custom size we'll have to specify the scale parameters
+    // using the element's width and height properties - lets draw one
+    // on top in the corner:
+  }
+  updateCanvas(canvas) {
     const frameCount = 179;
-    var imageObj1 = new Image();
-    imageObj1 = this.getImage(1);
-    const ctx = canvas.getContext("2d");
 
     const html = document.documentElement;
     const scrollTop = html.scrollTop;
     const maxScrollTop = html.scrollHeight - window.innerHeight;
     const scrollFraction = scrollTop / maxScrollTop;
-    const frameIndex = Math.min(
+
+    this.frameIndex = Math.min(
       frameCount - 1,
       Math.floor(scrollFraction * frameCount)
     );
 
-    this.updateImage(imageObj1, frameIndex + 1, ctx);
-
-    console.log(frameIndex);
+    this.updateImage(this.frameIndex + 1);
+    console.log(this.frameIndex);
   }
 
   getAllImg = async () => {
     var x = 0;
-    while (x != 179) {
+    while (x !== 179) {
       x++;
       var imgObj = new Image();
 
-      imgObj = this.getImage(x);
-      await imgObj.onload;
+      imgObj = await this.getImage(x);
     }
   };
   componentDidMount() {
-    this.getAllImg();
-    this.showImage();
+    this.canvas.width = "1158";
+    this.canvas.height = "770";
+    document
+      .getElementById("canvas-wrapper")
+      .insertAdjacentElement("afterbegin", this.canvas);
+    console.log(this.canvas);
+
+    this.showImage(this.canvas);
     document.onscroll = () => {
+      document
+        .getElementById("canvas-wrapper")
+        .insertAdjacentElement("afterbegin", this.canvas);
       requestAnimationFrame(() => {
-        this.updateCanvas();
+        this.updateCanvas(this.canvas);
       });
     };
   }
-  componentDidUpdate() {
-    document.scrollTop = 0;
-  }
-  componentWillUnmount() {
-    document.scrollTop = 0;
-  }
+
+  componentWillUnmount() {}
   render() {
-    return (
-      <Container fluid style={{ marginTop: "80px" }}>
-        <Row>
-          <canvas ref="canvas" width="1158" height="770"></canvas>
-        </Row>
-      </Container>
-    );
+    return <Container id="canvas-wrapper"></Container>;
   }
 }
+
 export default Profile;

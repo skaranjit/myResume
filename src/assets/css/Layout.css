@@ -1,0 +1,18 @@
+#Spacer {
+  height: 100%;
+  margin: 6vh;
+}
+.wrapper {
+  bottom: -1;
+  flex-flow: column-reverse;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+}
+.footer-wrapper {
+  height: 20vh;
+  padding-top: 62%;
+  object-fit: cover;
+  position: fixed;
+  width: 100vw;
+}
