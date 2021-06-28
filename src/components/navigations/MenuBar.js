@@ -27,7 +27,7 @@ class MenuBar extends Component {
             })
           }
         />
-        <Navbar.Brand href={home}>
+        <Navbar.Brand href="#">
           <motion.img
             a
             animate={{
@@ -46,11 +46,11 @@ class MenuBar extends Component {
         </Navbar.Brand>
 
         <Navbar.Collapse id="sidebar" className="justify-content-end">
-          <Nav defaultActiveKey="home">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/Profile">Profile</Nav.Link>
-            <Nav.Link href="/About">Projects</Nav.Link>
-            <Nav.Link href="/ContactMe">Contact Me</Nav.Link>
+          <Nav defaultActiveKey="#">
+            <Nav.Link href="#">Home</Nav.Link>
+            <Nav.Link href="#Profile">Profile</Nav.Link>
+            <Nav.Link href="#About">Projects</Nav.Link>
+            <Nav.Link href="#ContactMe">Contact Me</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

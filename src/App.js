@@ -1,5 +1,5 @@
 // import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
@@ -9,7 +9,7 @@ import "./assets/css/canvas.css";
 function App() {
   return (
     <div id="root">
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
         <Layout>
           <Switch>
             <Route exact path="/" component={home} />
