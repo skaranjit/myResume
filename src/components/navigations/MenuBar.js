@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { motion } from "framer-motion";
 import logo from "./../../assets/logos/logo.png";
-import home from "./../../pages/home.js";
-import Profile from "../../pages/Profile";
 
 class MenuBar extends Component {
   constructor() {
@@ -27,7 +25,7 @@ class MenuBar extends Component {
             })
           }
         />
-        <Navbar.Brand href="#">
+        <Navbar.Brand href="#home">
           <motion.img
             a
             animate={{
@@ -46,8 +44,8 @@ class MenuBar extends Component {
         </Navbar.Brand>
 
         <Navbar.Collapse id="sidebar" className="justify-content-end">
-          <Nav defaultActiveKey="#">
-            <Nav.Link href="#">Home</Nav.Link>
+          <Nav defaultActiveKey="#home">
+            <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#Profile">Profile</Nav.Link>
             <Nav.Link href="#About">Projects</Nav.Link>
             <Nav.Link href="#ContactMe">Contact Me</Nav.Link>
