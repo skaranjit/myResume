@@ -8,14 +8,14 @@ import home from "./pages/home";
 import "./assets/css/canvas.css";
 function App() {
   return (
-    <div>
-      <Router>
+    <div id="root">
+      <Router basename={process.env.PUBLIC_URL}>
         <Layout>
           <Switch>
-            <Route path={"/"} component={home}></Route>
-            <Route path="/Profile" component={Profile}></Route>
-            <Route path="/About" component={About}></Route>
-            <Route path={"/ContactMe"} component={ContactMe}></Route>
+            <Route exact path={"/"} component={home} />
+            <Route exact path={"/Profile"} component={Profile} />
+            <Route exact path={"/About"} component={About} />
+            <Route excat path={"/ContactMe"} component={ContactMe} />
           </Switch>
         </Layout>
       </Router>

@@ -3,6 +3,8 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 import { motion } from "framer-motion";
 import logo from "./../../assets/logos/logo.png";
 import home from "./../../pages/home.js";
+import Profile from "../../pages/Profile";
+
 class MenuBar extends Component {
   constructor() {
     super();
@@ -25,7 +27,7 @@ class MenuBar extends Component {
             })
           }
         />
-        <Navbar.Brand href="/home">
+        <Navbar.Brand href={home}>
           <motion.img
             a
             animate={{
