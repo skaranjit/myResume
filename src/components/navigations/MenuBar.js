@@ -47,10 +47,10 @@ class MenuBar extends Component {
 
         <Navbar.Collapse id="sidebar" className="justify-content-end">
           <Nav defaultActiveKey="home">
-            <Nav.Link href="home">Home</Nav.Link>
-            <Nav.Link href="Profile">Profile</Nav.Link>
-            <Nav.Link href="About">Projects</Nav.Link>
-            <Nav.Link href="ContactMe">Contact Me</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/Profile">Profile</Nav.Link>
+            <Nav.Link href="/About">Projects</Nav.Link>
+            <Nav.Link href="/ContactMe">Contact Me</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

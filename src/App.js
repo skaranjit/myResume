@@ -12,10 +12,10 @@ function App() {
       <Router basename={process.env.PUBLIC_URL}>
         <Layout>
           <Switch>
-            <Route exact path={"/"} component={home} />
-            <Route exact path={"/Profile"} component={Profile} />
-            <Route exact path={"/About"} component={About} />
-            <Route excat path={"/ContactMe"} component={ContactMe} />
+            <Route exact path="/" component={home} />
+            <Route exact path="/Profile" component={Profile} />
+            <Route exact path="/About" component={About} />
+            <Route excat path="/ContactMe" component={ContactMe} />
           </Switch>
         </Layout>
       </Router>
