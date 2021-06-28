@@ -8,7 +8,13 @@ const wrapper = styled.div`
 `;
 
 function home(props) {
-  return <wrapper></wrapper>;
+  return (
+    <wrapper>
+      <div>
+        <h1> Welcome to my Page</h1>
+      </div>
+    </wrapper>
+  );
 }
 
 export default home;
