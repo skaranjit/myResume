@@ -101,8 +101,8 @@ class MenuBar extends Component {
             >
               <li className="nav-item">
                 <motion.a
-                  whileHover={{ scale: 1.4 }}
-                  whileTap={{ scale: 0.95, rotate: 45 }}
+                  whileHover={{ scale: 1.4, rotate: 45 }}
+                  whileTap={{ scale: 2.5, rotateZ: 10 }}
                   onClick={() =>
                     this.setState({
                       navExpanded: false,
@@ -122,8 +122,8 @@ class MenuBar extends Component {
               </li>
               <li className="nav-item">
                 <motion.a
-                  whileHover={{ scale: 1.4 }}
-                  whileTap={{ scale: 0.95, rotate: 45 }}
+                  whileHover={{ scale: 1.4, rotate: -45 }}
+                  whileTap={{ scale: 2.5, rotateZ: 10 }}
                   onClick={() =>
                     this.setState({
                       navExpanded: false,
@@ -142,8 +142,8 @@ class MenuBar extends Component {
               </li>
               <li className="nav-item">
                 <motion.a
-                  whileHover={{ scale: 1.4 }}
-                  whileTap={{ scale: 0.95, rotate: 45 }}
+                  whileHover={{ scale: 1.4, rotate: 45 }}
+                  whileTap={{ scale: 2.5, rotateZ: 10 }}
                   onClick={() =>
                     this.setState({
                       navExpanded: false,
