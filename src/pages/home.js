@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Profile from "./Profile";
-import profile from "./../assets/img/profile.jpg";
+import profile from "./../assets/img/profile.png";
 import {
   motion,
   motionValue,
@@ -82,8 +82,8 @@ const Home = () => {
             <motion.div
               animate={{ scale: [5, 1] }}
               style={{
-                height: "35%",
-                width: "30%",
+                height: "200px",
+                width: "200px",
                 borderRadius: "50%",
                 background: "white",
                 alignSelf: "center",
@@ -93,7 +93,7 @@ const Home = () => {
               <img
                 src={profile}
                 className="rounded-circle"
-                style={{ height: "100%", width: "100%" }}
+                style={{ height: "auto", width: "100%" }}
               ></img>
             </motion.div>
             <motion.div
@@ -106,13 +106,13 @@ const Home = () => {
             >
               <h2
                 style={{ color: "#ffff", padding: 0, margin: 0 }}
-                class="display-2   bottom-50 end-50"
+                class="display-3  bottom-50 end-50"
               >
                 Suman Karanjit
               </h2>
-              <h3 class=" " style={{ color: "#6c757d" }}>
+              <h4 class=" " style={{ color: "#6c757d" }}>
                 Software Developer
-              </h3>
+              </h4>
             </motion.div>
           </ColumnLeft>
         </motion.div>
