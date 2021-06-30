@@ -72,7 +72,7 @@ class MenuBar extends Component {
                 borderRadius: ["20%", "20%", "50%", "50%", "20%"],
               }}
               whileHover={{
-                scale: 3,
+                scale: 2,
                 rotate: [0, 0, 270, 270, 0],
               }}
               src={logo}
@@ -101,7 +101,7 @@ class MenuBar extends Component {
             >
               <li className="nav-item">
                 <motion.a
-                  whileHover={{ scale: 1.4, rotate: 45 }}
+                  whileHover={{ scale: 1.4 }}
                   whileTap={{ scale: 2.5, rotateZ: 10 }}
                   onClick={() =>
                     this.setState({
@@ -122,7 +122,7 @@ class MenuBar extends Component {
               </li>
               <li className="nav-item">
                 <motion.a
-                  whileHover={{ scale: 1.4, rotate: -45 }}
+                  whileHover={{ scale: 1.4 }}
                   whileTap={{ scale: 2.5, rotateZ: 10 }}
                   onClick={() =>
                     this.setState({
@@ -142,7 +142,7 @@ class MenuBar extends Component {
               </li>
               <li className="nav-item">
                 <motion.a
-                  whileHover={{ scale: 1.4, rotate: 45 }}
+                  whileHover={{ scale: 1.4 }}
                   whileTap={{ scale: 2.5, rotateZ: 10 }}
                   onClick={() =>
                     this.setState({

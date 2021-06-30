@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Profile from "./Profile";
+import profile from "./../assets/img/profile.jpg";
 import {
   motion,
-  transform,
-  useElementScroll,
+  motionValue,
+  useMotionValue,
   useTransform,
   useViewportScroll,
 } from "framer-motion";
@@ -34,55 +35,91 @@ const ColumnRight = styled.div`
   justify-content: center;
   align-items: flex-start;
 `;
+const contentOffsetY = motionValue(0);
 
 const Home = () => {
-  useEffect(() => {
-    Aos.init({ duration: 2000 });
-  }, []);
   const ref = useRef();
-  const [progress, setProgress] = useState(0);
-  const { scrollYProgress } = useViewportScroll();
-  const scale = useTransform(scrollYProgress, [1, 0], [0, 1]);
-  const scale2 = useTransform(scrollYProgress, [0, 0], [0.5, 1]);
-  const rotate = useTransform(scrollYProgress, [0, 0], [0, 0]);
+  const [start, setStart] = useState(null);
+  const [end, setEnd] = useState(null);
+  useLayoutEffect(() => {
+    Aos.init({ duration: 2000 });
+    if (!ref.current) {
+      return;
+    }
+    const rect = ref.current.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const offsetTop = rect.top + scrollTop;
+    setStart(offsetTop / document.body.clientHeight);
+    setEnd((offsetTop + rect.height) / document.body.clientHeight);
+  }, []);
 
+  const [progress, setProgress] = useState(0);
+  const { scrollY, scrollYProgress } = useViewportScroll();
+
+  // Apply this override to your scroll component
+
+  const x = useMotionValue(0);
+  const scale = useTransform(scrollYProgress, [1, 0], [0, 1], {
+    clamp: false,
+  });
+
+  console.log(scrollY, scrollYProgress);
   return (
     <div>
       <motion.Section
         style={{
           scale,
-          rotate,
-          height: "100vh",
         }}
         ref={ref}
-        className="bg-dark "
+        className="bg-dark   "
       >
-        <motion.div className="container-fluid">
+        <motion.div className="top-50 start-100 p-5 vh-100 ">
           <ColumnLeft
-            style={{ background: "#0000" }}
+            style={{ background: "#0000", height: "100vh" }}
             data-aos="fade-left"
-            clasName="bg-dark"
+            clasName="bg-dark vh-100 "
           >
-            <motion.figure
-              class="text-center"
-              animate={{ scale: [8, 1] }}
+            <motion.div
+              animate={{ scale: [5, 1] }}
+              style={{
+                height: "35%",
+                width: "30%",
+                borderRadius: "50%",
+                background: "white",
+                alignSelf: "center",
+                justifyContent: "center",
+              }}
+            >
+              <img
+                src={profile}
+                className="rounded-circle"
+                style={{ height: "100%", width: "100%" }}
+              ></img>
+            </motion.div>
+            <motion.div
+              animate={{ scale: [5, 1] }}
               transition={{ duration: 0.9 }}
+              style={{
+                justifyContent: "center",
+                alignSelf: "center",
+              }}
             >
               <h2
                 style={{ color: "#ffff", padding: 0, margin: 0 }}
-                class="display-2"
+                class="display-2   bottom-50 end-50"
               >
                 Suman Karanjit
               </h2>
               <h3 class=" " style={{ color: "#6c757d" }}>
                 Software Developer
               </h3>
-            </motion.figure>
+            </motion.div>
           </ColumnLeft>
         </motion.div>
       </motion.Section>
+
       <motion.Section
-        style={{ padding: 0, margin: "0px", rotate }}
+        style={{ padding: 0, margin: "0px" }}
         className="bg-light "
       >
         <motion.div className=" container bg-light ">
@@ -122,7 +159,7 @@ const Home = () => {
           </motion.figure>
         </motion.div>
       </motion.Section>
-      <motion.Section style={{ rotate }} className="bg-light ">
+      <motion.Section style={{}} className="bg-light ">
         <motion.div
           style={{ padding: "20px" }}
           className=" container-fluid bg-light "
