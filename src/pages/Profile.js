@@ -73,9 +73,6 @@
 
 // export default Profile;
 import React, { Component, createRef } from "react";
-import { Container, Row } from "react-bootstrap";
-import { findAllInRenderedTree } from "react-dom/test-utils";
-import { ReactDOM } from "react";
 
 const cache = {};
 function importAll(r) {
@@ -120,7 +117,7 @@ class Profile extends Component {
         console.log("resolved");
       })
       .catch((error) => console.error(error));
-    console.log(imgO);
+    console.log(imgObj);
     return imgO;
   }
 
@@ -190,9 +187,6 @@ class Profile extends Component {
 
     this.showImage(this.canvas);
     document.onscroll = () => {
-      document
-        .getElementById("canvas-wrapper")
-        .insertAdjacentElement("afterbegin", this.canvas);
       requestAnimationFrame(() => {
         this.updateCanvas(this.canvas);
       });
@@ -201,7 +195,7 @@ class Profile extends Component {
 
   componentWillUnmount() {}
   render() {
-    return <Container id="canvas-wrapper"></Container>;
+    return <div id="canvas-wrapper"></div>;
   }
 }
 

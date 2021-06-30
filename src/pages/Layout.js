@@ -1,8 +1,8 @@
 import React from "react";
 import MenuBar from "../components/navigations/MenuBar";
 import Footer from "../components/navigations/Footer";
-import { Container } from "react-bootstrap";
-import "../assets/css/Layout.css";
+
+import styled from "styled-components";
 
 const Layout = (props) => {
   return (
