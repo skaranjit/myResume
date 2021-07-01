@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Profile from "./Profile";
 import profile from "./../assets/img/profile.png";
+import { SocialIcon } from "react-social-icons";
 import {
   motion,
   motionValue,
@@ -35,9 +36,6 @@ const ColumnRight = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-`;
-const Row = styled.div`
-  display: "table-row";
 `;
 
 const contentOffsetY = motionValue(0);
@@ -113,39 +111,45 @@ const Home = () => {
       </motion.Section>
       <motion.div style={{ display: "flex", width: "100%" }}>
         <motion.div
+          animate={progress > 345 ? { scale: [0.3, 1] } : {}}
           id="sidebar sticky"
-          animate={{ scale: [5, 1] }}
+          className="bg-light"
           style={
-            (progress > 350
-              ? {
-                  opacity: 0.5,
-                }
-              : {},
             progress > 354
               ? {
-                  width: "250px",
+                  display: "flex",
+                  flex: 1,
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                  width: "90px",
                   position: "fixed",
-                  top: "10%",
-                  left: "8px",
+                  top: "0%",
+
                   height: "100vh",
                   zIndex: " 999",
-                  color: "#fff",
-                  margin: "0px",
-                  transition: "all 0.3s",
+
+                  paddingTop: "90px",
+                  paddingLeft: "4px",
+
                   justifyContent: "right",
                   marginRight: "10%",
                 }
               : {
                   display: "none",
-                })
+                }
           }
         >
           <motion.div
-            animate={{ scale: [5, 1] }}
+            animate={progress > 345 ? { scale: [3, 1] } : {}}
+            transition={{ duration: 0.5 }}
             style={{
-              height: "80px",
+              maxHeight: "80px",
               width: "80px",
               borderRadius: "50%",
+              justifyContent: "stretch",
+              display: "flex",
+              flex: 1,
             }}
           >
             <img
@@ -155,22 +159,38 @@ const Home = () => {
             ></img>
           </motion.div>
           <motion.div
-            animate={{ scale: [0.2, 1] }}
-            transition={{ duration: 2 }}
+            animate={progress > 348 ? { scale: [0.2, 1] } : {}}
+            transition={{ duration: 1 }}
             style={{
+              display: "flex",
               justifyContent: "center",
-              alignSelf: "center",
               alignItems: "center",
-              paddingLeft: "32px",
+              padding: "0.4rem",
+              flexDirection: "row",
             }}
           >
-            <h6
-              style={{
-                color: "black",
-              }}
-            >
-              SK
-            </h6>
+            <h6 style={{ color: "darkslategray" }}>SK</h6>
+          </motion.div>
+          <motion.div
+            animate={progress > 348 ? { scale: [0.2, 1] } : {}}
+            transition={{ duration: 1 }}
+            style={{
+              display: "flex",
+              flex: "0.8",
+              flexDirection: "row",
+              justifyContent: "flex-end",
+              alignContent: "space-around",
+              alignItems: "flex-start",
+            }}
+          >
+            <SocialIcon
+              url="https://github.com/skaranjit"
+              style={{ height: 25, width: 25, margin: "4px" }}
+            />
+            <SocialIcon
+              url="https://www.linkedin.com/in/suman-karanjit-967373211/"
+              style={{ height: 25, width: 25, margin: "4px" }}
+            />
           </motion.div>
         </motion.div>
       </motion.div>
