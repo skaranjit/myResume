@@ -176,10 +176,25 @@ const Home = () => {
             transition={{ duration: 1 }}
             style={{
               display: "flex",
-              flex: "0.8",
+              flex: "0.1",
+              flexDirection: "row",
+              justifyContent: "space-around",
+
+              alignItems: "flex-end",
+            }}
+          >
+            <label for="connect">Connect</label>
+          </motion.div>
+          <motion.div
+            id="connect"
+            animate={progress > 348 ? { scale: [0.2, 1] } : {}}
+            transition={{ duration: 1 }}
+            style={{
+              display: "flex",
+              flex: "0.1",
               flexDirection: "row",
               justifyContent: "flex-end",
-              alignContent: "space-around",
+
               alignItems: "flex-start",
             }}
           >
@@ -188,10 +203,28 @@ const Home = () => {
               style={{ height: 25, width: 25, margin: "4px" }}
             />
             <SocialIcon
+              network="email"
+              url="#Contact"
+              style={{ height: 25, width: 25, margin: "4px" }}
+            />
+            <SocialIcon
               url="https://www.linkedin.com/in/suman-karanjit-967373211/"
               style={{ height: 25, width: 25, margin: "4px" }}
             />
           </motion.div>
+          <motion.div
+            animate={progress > 348 ? { scale: [0.2, 1] } : {}}
+            transition={{ duration: 1 }}
+            style={{
+              display: "flex",
+              flex: "0.2",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              objectFit: "cover",
+              alignItems: "center",
+              flexWrap: "wrap",
+            }}
+          ></motion.div>
         </motion.div>
       </motion.div>
       <motion.Section

@@ -120,26 +120,7 @@ class MenuBar extends Component {
                   Home
                 </motion.a>
               </li>
-              <li className="nav-item">
-                <motion.a
-                  whileHover={{ scale: 1.4 }}
-                  whileTap={{ scale: 2.5, rotateZ: 10 }}
-                  onClick={() =>
-                    this.setState({
-                      navExpanded: false,
-                      selected: "About",
-                    })
-                  }
-                  className={
-                    this.state.selected == "About"
-                      ? "nav-link active"
-                      : "nav-link "
-                  }
-                  href="#About"
-                >
-                  About
-                </motion.a>
-              </li>
+
               <li className="nav-item">
                 <motion.a
                   whileHover={{ scale: 1.4 }}
