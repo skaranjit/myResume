@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Profile from "./Profile";
 import profile from "./../assets/img/profile.png";
@@ -13,13 +13,14 @@ import { Component } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { auto } from "@popperjs/core";
+import postcssFlexbugsFixes from "postcss-flexbugs-fixes";
 
 const Section = styled.section`
   justify-conter: center;
   align-item: center;
   display: flex;
 `;
-const ColumnLeft = styled.div`
+const Container1 = styled.div`
   padding: 5rem 2rem;
   display: flex;
   flex: 1;
@@ -35,30 +36,23 @@ const ColumnRight = styled.div`
   justify-content: center;
   align-items: flex-start;
 `;
+const Row = styled.div`
+  display: "table-row";
+`;
+
 const contentOffsetY = motionValue(0);
 
 const Home = () => {
   const ref = useRef();
-  const [start, setStart] = useState(null);
-  const [end, setEnd] = useState(null);
-  useLayoutEffect(() => {
-    Aos.init({ duration: 2000 });
-    if (!ref.current) {
-      return;
-    }
-    const rect = ref.current.getBoundingClientRect();
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const offsetTop = rect.top + scrollTop;
-    setStart(offsetTop / document.body.clientHeight);
-    setEnd((offsetTop + rect.height) / document.body.clientHeight);
-  }, []);
-
   const [progress, setProgress] = useState(0);
   const { scrollY, scrollYProgress } = useViewportScroll();
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+    // var x = scrollYProgress.onChange((v) => v);
+    // return x;
+    return scrollY.onChange((v) => setProgress(v));
+  }, [scrollYProgress, scrollY]);
 
-  // Apply this override to your scroll component
-
-  const x = useMotionValue(0);
   const scale = useTransform(scrollYProgress, [1, 0], [0, 1], {
     clamp: false,
   });
@@ -74,8 +68,8 @@ const Home = () => {
         className="bg-dark   "
       >
         <motion.div className="top-50 start-100 p-5 vh-100 ">
-          <ColumnLeft
-            style={{ background: "#0000", height: "100vh" }}
+          <Container1
+            style={{ background: "#0000", height: "100%" }}
             data-aos="fade-left"
             clasName="bg-dark vh-100 "
           >
@@ -114,12 +108,74 @@ const Home = () => {
                 Software Developer
               </h4>
             </motion.div>
-          </ColumnLeft>
+          </Container1>
         </motion.div>
       </motion.Section>
-
+      <motion.div style={{ display: "flex", width: "100%" }}>
+        <motion.div
+          id="sidebar sticky"
+          animate={{ scale: [5, 1] }}
+          style={
+            (progress > 350
+              ? {
+                  opacity: 0.5,
+                }
+              : {},
+            progress > 354
+              ? {
+                  width: "250px",
+                  position: "fixed",
+                  top: "10%",
+                  left: "8px",
+                  height: "100vh",
+                  zIndex: " 999",
+                  color: "#fff",
+                  margin: "0px",
+                  transition: "all 0.3s",
+                  justifyContent: "right",
+                  marginRight: "10%",
+                }
+              : {
+                  display: "none",
+                })
+          }
+        >
+          <motion.div
+            animate={{ scale: [5, 1] }}
+            style={{
+              height: "80px",
+              width: "80px",
+              borderRadius: "50%",
+            }}
+          >
+            <img
+              src={profile}
+              className="rounded-circle"
+              style={{ height: "auto", width: "100%" }}
+            ></img>
+          </motion.div>
+          <motion.div
+            animate={{ scale: [0.2, 1] }}
+            transition={{ duration: 2 }}
+            style={{
+              justifyContent: "center",
+              alignSelf: "center",
+              alignItems: "center",
+              paddingLeft: "32px",
+            }}
+          >
+            <h6
+              style={{
+                color: "black",
+              }}
+            >
+              SK
+            </h6>
+          </motion.div>
+        </motion.div>
+      </motion.div>
       <motion.Section
-        style={{ padding: 0, margin: "0px" }}
+        style={{ paddingLeft: "38px", marginLeft: "38px" }}
         className="bg-light "
       >
         <motion.div className=" container bg-light ">
@@ -159,7 +215,13 @@ const Home = () => {
           </motion.figure>
         </motion.div>
       </motion.Section>
-      <motion.Section style={{}} className="bg-light ">
+      <motion.Section
+        style={{
+          paddingLeft: "38px",
+          marginLeft: "38px",
+        }}
+        className="bg-light "
+      >
         <motion.div
           style={{ padding: "20px" }}
           className=" container-fluid bg-light "
