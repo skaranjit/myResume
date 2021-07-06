@@ -13,6 +13,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "aos": "^2.3.4",
+    "axios": "^0.21.1",
     "framer-motion": "^4.1.17",
     "gh-pages": "^3.2.3",
     "mdb-react-ui-kit": "^1.0.0-beta7",
@@ -26,6 +27,7 @@
     "sass": "^1.35.1",
     "sass-loader": "^10.2.0",
     "styled-components": "^5.3.0",
+    "validator": "^13.6.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

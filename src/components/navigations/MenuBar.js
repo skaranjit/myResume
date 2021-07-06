@@ -97,7 +97,7 @@ class MenuBar extends Component {
             <ul
               className="navbar-nav me-auto mb-2 mb-lg-0"
               defaultChecked={this.state.selected}
-              style={this.state.navExpanded ? {} : { marginLeft: "70vw" }}
+              style={this.state.navExpanded ? {} : { marginLeft: "80vw" }}
             >
               <li className="nav-item">
                 <motion.a

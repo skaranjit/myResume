@@ -1,20 +1,15 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import Profile from "./Profile";
 import profile from "./../assets/img/profile.png";
 import { SocialIcon } from "react-social-icons";
 import {
   motion,
   motionValue,
-  useMotionValue,
   useTransform,
   useViewportScroll,
 } from "framer-motion";
-import { Component } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { auto } from "@popperjs/core";
-import postcssFlexbugsFixes from "postcss-flexbugs-fixes";
 
 const Section = styled.section`
   justify-conter: center;
@@ -193,7 +188,6 @@ const Home = () => {
               display: "flex",
               flex: "0.1",
               flexDirection: "row",
-              justifyContent: "flex-end",
 
               alignItems: "flex-start",
             }}
