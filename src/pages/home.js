@@ -76,12 +76,12 @@ const Home = () => {
             <motion.div
               animate={{ scale: [2, 1] }}
               style={{
-                height: "350px",
-                width: "350px",
+                height: "300px",
+                width: "300px",
                 borderRadius: "50%",
 
                 flex: 1,
-                paddingTop: "15%",
+                paddingTop: "10px",
                 justifyContent: "flex-end",
                 alignItems: "flex-end",
               }}
