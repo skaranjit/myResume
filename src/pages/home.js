@@ -39,6 +39,7 @@ const Home = () => {
   const ref = useRef();
   const [progress, setProgress] = useState(0);
   const { scrollY, scrollYProgress } = useViewportScroll();
+
   useEffect(() => {
     Aos.init({ duration: 2000 });
     // var x = scrollYProgress.onChange((v) => v);
@@ -58,23 +59,31 @@ const Home = () => {
           scale,
         }}
         ref={ref}
-        className="bg-dark   "
+        className="bg-dark"
       >
-        <motion.div className="top-50 start-100 p-5 vh-100 ">
+        <motion.div>
           <Container1
-            style={{ background: "#0000", height: "100%" }}
+            style={{
+              flex: 1,
+              minHeight: "100vh",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
             data-aos="fade-left"
             clasName="bg-dark vh-100 "
           >
             <motion.div
-              animate={{ scale: [5, 1] }}
+              animate={{ scale: [2, 1] }}
               style={{
-                height: "200px",
-                width: "200px",
+                height: "350px",
+                width: "350px",
                 borderRadius: "50%",
-                background: "white",
-                alignSelf: "center",
-                justifyContent: "center",
+
+                flex: 1,
+                paddingTop: "15%",
+                justifyContent: "flex-end",
+                alignItems: "flex-end",
               }}
             >
               <img
@@ -87,24 +96,31 @@ const Home = () => {
               animate={{ scale: [5, 1] }}
               transition={{ duration: 0.9 }}
               style={{
-                justifyContent: "center",
-                alignSelf: "center",
+                flex: 1,
+                paddingTop: "20px",
               }}
             >
               <h2
-                style={{ color: "#ffff", padding: 0, margin: 0 }}
-                class="display-3  bottom-50 end-50"
+                style={{
+                  color: "#ffff",
+
+                  textAlign: "center",
+                }}
+                class="display-3  "
               >
                 Suman Karanjit
               </h2>
-              <h4 class=" " style={{ color: "#6c757d" }}>
-                Software Developer
-              </h4>
+
+              <h6 class=" " style={{ color: "#6c757d", textAlign: "center" }}>
+                Aspiring software developer experienced in object-oriented
+                programming; developing, testing and debugging code; designing
+                interfaces; and administering systems and networks.
+              </h6>
             </motion.div>
           </Container1>
         </motion.div>
       </motion.Section>
-      <motion.div style={{ display: "flex", width: "100%" }}>
+      <div style={{ display: "flex", width: "100%" }}>
         <motion.div
           animate={progress > 345 ? { scale: [0.3, 1] } : {}}
           id="sidebar sticky"
@@ -142,9 +158,11 @@ const Home = () => {
               maxHeight: "80px",
               width: "80px",
               borderRadius: "50%",
-              justifyContent: "stretch",
+              justifyContent: "center",
               display: "flex",
               flex: 1,
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
             <img
@@ -152,34 +170,9 @@ const Home = () => {
               className="rounded-circle"
               style={{ height: "auto", width: "100%" }}
             ></img>
-          </motion.div>
-          <motion.div
-            animate={progress > 348 ? { scale: [0.2, 1] } : {}}
-            transition={{ duration: 1 }}
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: "0.4rem",
-              flexDirection: "row",
-            }}
-          >
             <h6 style={{ color: "darkslategray" }}>SK</h6>
           </motion.div>
-          <motion.div
-            animate={progress > 348 ? { scale: [0.2, 1] } : {}}
-            transition={{ duration: 1 }}
-            style={{
-              display: "flex",
-              flex: "0.1",
-              flexDirection: "row",
-              justifyContent: "space-around",
 
-              alignItems: "flex-end",
-            }}
-          >
-            <label for="connect">Connect</label>
-          </motion.div>
           <motion.div
             id="connect"
             animate={progress > 348 ? { scale: [0.2, 1] } : {}}
@@ -206,21 +199,127 @@ const Home = () => {
               style={{ height: 25, width: 25, margin: "4px" }}
             />
           </motion.div>
-          <motion.div
-            animate={progress > 348 ? { scale: [0.2, 1] } : {}}
-            transition={{ duration: 1 }}
+          <div
             style={{
               display: "flex",
-              flex: "0.2",
+              flex: "0.8",
               flexDirection: "column",
-              justifyContent: "flex-start",
-              objectFit: "cover",
-              alignItems: "center",
-              flexWrap: "wrap",
+              justifyContent: "flex-end",
+              marginLeft: "25px",
+              alignItems: "flex-start",
             }}
-          ></motion.div>
+          >
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: { delay: 1.6, duration: 1.5 },
+              }}
+            >
+              <img
+                alt="HTML5"
+                src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: { delay: 1.4, duration: 1.5 },
+              }}
+            >
+              <img
+                alt="CSS3"
+                src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: { delay: 1.2, duration: 1.5 },
+              }}
+            >
+              <img
+                alt="Python"
+                src="https://img.shields.io/badge/python-%2314354C.svg?style=for-the-badge&logo=python&logoColor=white"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: { delay: 1, duration: 1.5 },
+              }}
+            >
+              <img
+                alt="C"
+                src="https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white"
+              />
+            </motion.div>{" "}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: { delay: 0.8, duration: 1.5 },
+              }}
+            >
+              <img
+                alt="C++"
+                src="https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: { delay: 0.6, duration: 1.5 },
+              }}
+            >
+              <img
+                alt="C#"
+                src="https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: { delay: 0.4, duration: 1.5 },
+              }}
+            >
+              <img
+                alt="PHP"
+                src="https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: { delay: 0.2, duration: 1.5 },
+              }}
+            >
+              <img
+                alt="React"
+                src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: { delay: 0.1, duration: 1.5 },
+              }}
+            >
+              <img
+                alt="JavaScript"
+                src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"
+              />
+            </motion.div>
+          </div>
         </motion.div>
-      </motion.div>
+      </div>
       <motion.Section
         style={{ paddingLeft: "38px", marginLeft: "38px" }}
         className="bg-light "
@@ -279,12 +378,12 @@ const Home = () => {
               style={{ padding: "40px" }}
               class="display-4"
             >
-              Experience
+              Professional Experience
             </h2>
             <div class="accordion accordion-flush" id="accordionFlushExample">
               <div class="accordion-item bg-light">
                 <h2 class="accordion-header" id="flush-headingOne">
-                  Helpdesk Front Desk Representative
+                  IT Help Desk
                 </h2>
 
                 <div class="accordion-body">
@@ -293,7 +392,11 @@ const Home = () => {
                     Providing Support via phone for the Students and Faculty
                     Staff. <br></br> Handling Tickets and following up the push
                     backs <br></br> Troubleshooting and resolving Application
-                    and Hardware technical issues.
+                    and Hardware technical issues. <br></br>Manage and fix Tier
+                    I and some Tier II problems in both Windows 10 and Mac
+                    workstations. <br></br>
+                    Document and monitor support requests to create a knowledge
+                    base for future references.
                   </p>
                 </div>
               </div>
@@ -308,10 +411,10 @@ const Home = () => {
                   Blancco LLC. Austin,TX <br></br>{" "}
                   <p style={{ textAlign: "match-parent", fontSize: 13 }}>
                     <p style={{ textAlign: "match-parent", fontSize: 13 }}>
-                      Managing local server as well as Cloud (AWS)<br></br>{" "}
-                      Working on projects that best facilitates better access
-                      and secure networks and equipment.<br></br> Log Management
-                      (IBM QRADAR)
+                      Monitoring and Managing AWS resources, Internal Servers,
+                      and Resources in AD.<br></br> Working on projects that
+                      best facilitates better access and secure networks and
+                      equipment.<br></br> Log Management (IBM QRADAR)
                       <br></br>Providing Support for the employees for any
                       issues regarding applications or devices.
                     </p>
@@ -326,12 +429,33 @@ const Home = () => {
                 </h2>
 
                 <div class="accordion-body">
-                  ATOS, Fargo, ND (NOV 2015- JAN 2017) <br></br>{" "}
+                  ATOS, Fargo, ND <br></br>{" "}
                   <p style={{ textAlign: "match-parent", fontSize: 13 }}>
                     Providing Customer Support via phone. <br></br>Handling
                     Tickets and following up the push backs <br></br>{" "}
                     Troubleshooting and resolving issues regarding technical
                     issues with Mcdonald's IT equipment.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+              <div class="accordion-item bg-light">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  IT Support Assistant
+                </h2>
+
+                <div class="accordion-body">
+                  MSUM, Moorhead, MN <br></br>{" "}
+                  <p style={{ textAlign: "match-parent", fontSize: 13 }}>
+                    Executed several Installations and configurations of windows
+                    operating systems, Anti-viruses, Office packages and other
+                    software.
+                    <br></br>Monitored and resolved Network Support issues:
+                    Troubleshooting, printer issues, application support issues,
+                    as well as student and staff issues.
+                    <br></br> Executed several windows server configurations
+                    band installations.
                   </p>
                 </div>
               </div>

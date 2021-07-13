@@ -1,22 +1,28 @@
 // import "./App.css";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Switch,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Layout from "./pages/Layout";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
 import ContactForm from "./pages/Contact";
 import Home from "./pages/home";
+import { AnimatePresence } from "framer-motion";
 function App() {
+  const location = useLocation();
   return (
     <div id="root">
-      <Router>
-        <Layout>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/About" component={About} />
-            <Route excat path="/Contact" component={ContactForm} />
-          </Switch>
-        </Layout>
-      </Router>
+      <Layout />
+      <AnimatePresence exitBeforeEnter>
+        <Switch location={location} key={location.key}>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/About" component={About} />
+          <Route exact path="/Contact" component={ContactForm} />
+        </Switch>
+      </AnimatePresence>
     </div>
   );
 }
