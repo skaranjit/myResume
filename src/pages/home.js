@@ -14,6 +14,7 @@ import "aos/dist/aos.css";
 const Section = styled.section`
   justify-conter: center;
   align-item: center;
+  flex: "1";
   display: flex;
 `;
 const Container1 = styled.div`
@@ -51,7 +52,6 @@ const Home = () => {
     clamp: false,
   });
 
-  console.log(scrollY, scrollYProgress);
   return (
     <div>
       <motion.Section
@@ -61,68 +61,57 @@ const Home = () => {
         ref={ref}
         className="bg-dark"
       >
-        <motion.div>
-          <Container1
+        <Container1
+          style={{
+            flex: 1,
+            minHeight: "100vh",
+            flexDirection: "column",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          data-aos="fade-left"
+          clasName="bg-dark vh-100 "
+        >
+          <motion.div
+            animate={{ scale: [2, 1] }}
             style={{
+              maxHeight: "300px",
+              maxWidth: "300px",
+              borderRadius: "50%",
+              marginBottom: "15px",
               flex: 1,
-              minHeight: "100vh",
-              flexDirection: "column",
-              justifyContent: "center",
+              justifyContent: "flex-end",
               alignItems: "center",
+              alignContent: "space-around",
             }}
-            data-aos="fade-left"
-            clasName="bg-dark vh-100 "
           >
-            <motion.div
-              animate={{ scale: [2, 1] }}
-              style={{
-                height: "300px",
-                width: "300px",
-                borderRadius: "50%",
+            <img
+              src={profile}
+              className="rounded-circle"
+              style={{ height: "auto", width: "100%" }}
+            ></img>
+          </motion.div>
+          <h2
+            style={{
+              color: "#ffff",
 
-                flex: 1,
-                paddingTop: "10px",
-                justifyContent: "flex-end",
-                alignItems: "flex-end",
-              }}
-            >
-              <img
-                src={profile}
-                className="rounded-circle"
-                style={{ height: "auto", width: "100%" }}
-              ></img>
-            </motion.div>
-            <motion.div
-              animate={{ scale: [5, 1] }}
-              transition={{ duration: 0.9 }}
-              style={{
-                flex: 1,
-                paddingTop: "20px",
-              }}
-            >
-              <h2
-                style={{
-                  color: "#ffff",
+              textAlign: "center",
+            }}
+            class="display-3  "
+          >
+            Suman Karanjit
+          </h2>
 
-                  textAlign: "center",
-                }}
-                class="display-3  "
-              >
-                Suman Karanjit
-              </h2>
-
-              <h6 class=" " style={{ color: "#6c757d", textAlign: "center" }}>
-                Aspiring software developer experienced in object-oriented
-                programming; developing, testing and debugging code; designing
-                interfaces; and administering systems and networks.
-              </h6>
-            </motion.div>
-          </Container1>
-        </motion.div>
+          <h6 class=" " style={{ color: "#6c757d", textAlign: "center" }}>
+            Aspiring software developer experienced in object-oriented
+            programming; developing, testing and debugging code; designing
+            interfaces; and administering systems and networks.
+          </h6>
+        </Container1>
       </motion.Section>
       <div style={{ display: "flex", width: "100%" }}>
         <motion.div
-          animate={progress > 345 ? { scale: [0.3, 1] } : {}}
           id="sidebar sticky"
           className="bg-light"
           style={
@@ -138,7 +127,7 @@ const Home = () => {
                   top: "0%",
 
                   height: "100vh",
-                  zIndex: " 999",
+                  zIndex: "999",
 
                   paddingTop: "90px",
                   paddingLeft: "4px",
@@ -163,6 +152,7 @@ const Home = () => {
               flex: 1,
               flexDirection: "column",
               alignItems: "center",
+              alignContent: "space-around",
             }}
           >
             <img
@@ -211,10 +201,14 @@ const Home = () => {
           >
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                transition: { delay: 1.6, duration: 1.5 },
-              }}
+              animate={
+                progress > 354
+                  ? {
+                      opacity: 1,
+                      transition: { delay: 2.6, duration: 1.5 },
+                    }
+                  : {}
+              }
             >
               <img
                 alt="HTML5"
@@ -223,10 +217,14 @@ const Home = () => {
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                transition: { delay: 1.4, duration: 1.5 },
-              }}
+              animate={
+                progress > 354
+                  ? {
+                      opacity: 1,
+                      transition: { delay: 2.4, duration: 1.5 },
+                    }
+                  : {}
+              }
             >
               <img
                 alt="CSS3"
@@ -235,10 +233,14 @@ const Home = () => {
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                transition: { delay: 1.2, duration: 1.5 },
-              }}
+              animate={
+                progress > 354
+                  ? {
+                      opacity: 1,
+                      transition: { delay: 2.2, duration: 1.5 },
+                    }
+                  : {}
+              }
             >
               <img
                 alt="Python"
@@ -247,10 +249,14 @@ const Home = () => {
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                transition: { delay: 1, duration: 1.5 },
-              }}
+              animate={
+                progress > 354
+                  ? {
+                      opacity: 1,
+                      transition: { delay: 2, duration: 1.5 },
+                    }
+                  : {}
+              }
             >
               <img
                 alt="C"
@@ -259,10 +265,14 @@ const Home = () => {
             </motion.div>{" "}
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                transition: { delay: 0.8, duration: 1.5 },
-              }}
+              animate={
+                progress > 354
+                  ? {
+                      opacity: 1,
+                      transition: { delay: 1.8, duration: 1.5 },
+                    }
+                  : {}
+              }
             >
               <img
                 alt="C++"
@@ -271,10 +281,14 @@ const Home = () => {
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                transition: { delay: 0.6, duration: 1.5 },
-              }}
+              animate={
+                progress > 354
+                  ? {
+                      opacity: 1,
+                      transition: { delay: 1.6, duration: 1.5 },
+                    }
+                  : {}
+              }
             >
               <img
                 alt="C#"
@@ -283,10 +297,14 @@ const Home = () => {
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                transition: { delay: 0.4, duration: 1.5 },
-              }}
+              animate={
+                progress > 354
+                  ? {
+                      opacity: 1,
+                      transition: { delay: 1.2, duration: 1.5 },
+                    }
+                  : {}
+              }
             >
               <img
                 alt="PHP"
@@ -295,10 +313,14 @@ const Home = () => {
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                transition: { delay: 0.2, duration: 1.5 },
-              }}
+              animate={
+                progress > 354
+                  ? {
+                      opacity: 1,
+                      transition: { delay: 0.6, duration: 1.5 },
+                    }
+                  : {}
+              }
             >
               <img
                 alt="React"
@@ -307,10 +329,14 @@ const Home = () => {
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                transition: { delay: 0.1, duration: 1.5 },
-              }}
+              animate={
+                progress > 354
+                  ? {
+                      opacity: 1,
+                      transition: { delay: 0.2, duration: 1.5 },
+                    }
+                  : {}
+              }
             >
               <img
                 alt="JavaScript"
